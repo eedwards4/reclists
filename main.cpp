@@ -173,26 +173,35 @@ int main()
                 member_member = "a",
                 num_nodes = "(a b c d e f g h i j k l m n o p q r s t u v w x y z)",
                 last1 = "(a b c d e f g h i j k l m n (o p (q r (s))) (((t (u (v)) w))) (x y) z)";
-    // Tests
-    /* WHY THE FUCK IS THE LIST INPUT SO POORLY MADE. RUNNING UNIT TESTS LIKE THIS IS JUST WRONG.
-    test_one(num_nodes);
-    test_two(is_lat1);
-    test_two(is_lat2);
-    test_three(member1, member_member); // TODO: fix this
-    test_three(member2, member_member); // TODO: fix this
-    test_four(last1);
-    test_five(list_pair, list_pair);
-    test_six(firsts1);
-    test_six(firsts2);
-    test_seven(flat1); // TODO: fix this
-    test_seven(flat2); // TODO: fix this
-    test_eight(equal1, equal1);
-    test_eight(equal1, equal2);
-    test_nine(); // TODO: fix this
-    test_ten();
-    test_eleven();
-    test_twelve();
-    test_thirteen();*/
+                      // Tests
+                      /*
+    test_one();       // numNodesAtTheTopLevel
+    test_two();       // is_lat
+    test_two();
+    test_three();     // member
     test_three();
+    test_four();      // last
+    test_five();      // list_pair
+    test_six();       // firsts
+    test_seven();     // flat
+    test_seven();
+    test_eight();     // equal
+    test_eight();
+*/
+    test_nine();      // two_the_same
+    test_nine();
+    test_nine();
+                       /*
+    test_ten();       // total_reverse
+    test_eleven();    // shape
+    test_twelve();    // intersection
+    test_twelve();
+    test_twelve();
+    test_twelve();
+    test_thirteen();  // list_union
+    test_thirteen();
+    test_thirteen();
+    test_thirteen();
+    test_thirteen();*/
     return 0;
 }

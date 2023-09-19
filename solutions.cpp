@@ -22,6 +22,13 @@ int numNodesAtTheTopLevel(list p) {
     return 1 + numNodesAtTheTopLevel(cdr(p));
 }
 
+list append (list p, list q){
+    if(is_null(p)){
+        return q;
+    }
+    return cons(car(p), append(cdr(p), q));
+}
+
 bool is_lat(list p) {
     if( is_null(p) )
         return true;
@@ -31,15 +38,16 @@ bool is_lat(list p) {
 }
 
 bool member(list p, list q) {
-    if (is_null(cdr(q))) {
+    if (is_null(q)){
         return false;
     }
-    if (is_atom(car(q))) {
-        if (eq(p, car(q))) {
-            return true;
-        }
+    if (!is_atom(car(q))){
+        return member(p, car(q)) || member(p, cdr(q));
     }
-    return member(p, cdr(q)) || member(p, car(q));
+    if (eq(p, car(q))){
+        return true;
+    }
+    return member(p, cdr(q));
 }
 
 list last(list p) {
@@ -67,7 +75,6 @@ list list_pair(list p, list q){
 }
 
 list firsts(list p){
-    list t = null();
     if (is_null(cdr(p))){
         return cons(car(car(p)), null());
     }
@@ -75,27 +82,26 @@ list firsts(list p){
 }
 
 list flat(list p){
-    if (is_null(p)){
+    if (is_null(p)) {
         return null();
     }
-    if (is_atom(car(p))){
+    if (is_atom(car(p))) {
         return cons(car(p), flat(cdr(p)));
     }
-    return flat(car(p));
+    return append(flat(car(p)), flat(cdr(p)));
 }
 
 bool two_the_same(list p, list q){
-    if (is_null(cdr(p))) {
+    if (is_null(p)){
         return false;
     }
-    if (is_atom(car(p))){
-        if (is_atom(car(q))){
-            if (eq(car(p), car(q))){
-                return true;
-            }
-        }
+    if (!is_atom(car(p))){
+        return two_the_same(car(p), q) || two_the_same(cdr(p), q);
     }
-    return two_the_same(cdr(p), cdr(q)) || two_the_same(car(p), car(q));
+    if (member(car(p), q)){
+        return true;
+    }
+    return two_the_same(cdr(p), q);
 }
 
 bool equal(list p, list q){
@@ -108,13 +114,6 @@ bool equal(list p, list q){
         return false;
     }
     return equal(car(p), car(q)) && equal(cdr(p), cdr(q));
-}
-
-list append (list p, list q){
-    if(is_null(p))
-        return q;
-
-    return cons(car(p), append(cdr(p), q));
 }
 
 list total_reverse(list p){

@@ -8,8 +8,7 @@ void readToCin(std::string input){
     }
 }
 
-void test_one(std::string input){
-    readToCin(input);
+void test_one(){
     list p = read_list();
     std::cout << "Echoing the list..." << std::endl;
     write_list(p);
@@ -17,28 +16,24 @@ void test_one(std::string input){
               << numNodesAtTheTopLevel(p) << std::endl;
 }
 
-void test_two(std::string input){
-    readToCin(input);
+void test_two(){
     list p = read_list();
     std::cout << "Echoing the list..." << std::endl;
     write_list(p);
     std::cout << "The input list is a lat? " << (is_lat(p) ? "yes" : "no") << std::endl;
 }
 
-void test_three(std::string input, std::string atomInput){
-    readToCin(input);
+void test_three(){
     list p = read_list();
     std::cout << "Echoing the list..." << std::endl;
     write_list(p);
-    readToCin(atomInput);
     std::cout << "Echoing the atom..." << std::endl;
     list q = read_list();
     write_list(q);
     std::cout << "Is the atom a member of the input list? " << (member(q, p) ? "yes" : "no") << std::endl;
 }
 
-void test_four(std::string input){
-    readToCin(input);
+void test_four(){
     list p = read_list();
     std::cout << "Echoing the list..." << std::endl;
     write_list(p);
@@ -46,12 +41,10 @@ void test_four(std::string input){
     write_list(last(p));
 }
 
-void test_five(std::string input1, std::string input2){
-    readToCin(input1);
+void test_five(){
     list p = read_list();
     std::cout << "Echoing the first list..." << std::endl;
     write_list(p);
-    readToCin(input2);
     list q = read_list();
     std::cout << "Echoing the second list..." << std::endl;
     write_list(q);
@@ -59,8 +52,7 @@ void test_five(std::string input1, std::string input2){
     write_list(list_pair(p, q));
 }
 
-void test_six(std::string input){
-    readToCin(input);
+void test_six(){
     list p = read_list();
     std::cout << "Echoing the list..." << std::endl;
     write_list(p);
@@ -68,8 +60,7 @@ void test_six(std::string input){
     write_list(firsts(p));
 }
 
-void test_seven(std::string input){
-    readToCin(input);
+void test_seven(){
     list p = read_list();
     std::cout << "Echoing the list..." << std::endl;
     write_list(p);
@@ -77,10 +68,8 @@ void test_seven(std::string input){
     write_list(flat(p));
 }
 
-void test_eight(std::string input1, std::string input2){
-    //readToCin(input1);
+void test_eight(){
     list p = read_list();
-    //readToCin(input2);
     list q = read_list();
     std::cout << "Echoing the lists that you entered below." << std::endl;
     write_list(p);
@@ -106,6 +95,55 @@ void test_nine(){
     else{
         std::cout << "The two lists are not the same." << std::endl;
     }
+}
+
+void test_ten(){
+    //total rev
+    list p = read_list();
+    std::cout << "Echoing the list that you entered below." << std::endl;
+    write_list(p);
+    std::cout << "The total reverse of the list is: ";
+    write_list(total_reverse(p));
+}
+
+void test_eleven(){
+    //shape
+    list p = read_list();
+    std::cout << "Echoing the list that you entered below." << std::endl;
+    write_list(p);
+    std::cout << "The shape of the list is: ";
+    write_list(shape(p));
+}
+
+void test_twelve(){
+    //intersection
+    list p = read_list();
+    list q = read_list();
+    std::cout << "Echoing the lists that you entered below." << std::endl;
+    write_list(p);
+    write_list(q);
+    std::cout << "The intersection of the two lists is: ";
+    write_list(intersection(p, q));
+}
+
+void test_thirteen(){
+    //union
+    list p = read_list();
+    list q = read_list();
+    std::cout << "Echoing the lists that you entered below." << std::endl;
+    write_list(p);
+    write_list(q);
+    std::cout << "The union of the two lists is: ";
+    write_list(list_union(p, q));
+}
+
+void test_fourteen(){
+    //permute
+    list p = read_list();
+    std::cout << "Echoing the list that you entered below." << std::endl;
+    write_list(p);
+    std::cout << "The permutations of the list are: ";
+    write_list(permute(p));
 }
 
 int main()
@@ -151,7 +189,10 @@ int main()
     test_eight(equal1, equal1);
     test_eight(equal1, equal2);
     test_nine(); // TODO: fix this
-     */
-
+    test_ten();
+    test_eleven();
+    test_twelve();
+    test_thirteen();*/
+    test_three();
     return 0;
 }

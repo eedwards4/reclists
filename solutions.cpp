@@ -31,16 +31,15 @@ bool is_lat(list p) {
 }
 
 bool member(list p, list q) {
-    if (is_null(q)) {
+    if (is_null(cdr(q))) {
         return false;
     }
-    if (is_atom(car(q))){
-        if (eq(p, car(q))){
+    if (is_atom(car(q))) {
+        if (eq(p, car(q))) {
             return true;
         }
-        return member(p, cdr(q));
     }
-    return member(p, car(q));
+    return member(p, cdr(q)) || member(p, car(q));
 }
 
 list last(list p) {
@@ -111,20 +110,54 @@ bool equal(list p, list q){
     return equal(car(p), car(q)) && equal(cdr(p), cdr(q));
 }
 
-list total_reverse(list p){
+list append (list p, list q){
+    if(is_null(p))
+        return q;
 
+    return cons(car(p), append(cdr(p), q));
+}
+
+list total_reverse(list p){
+    if (is_null(p)){
+        return null();
+    }
+    if (is_atom(p)){
+        return p;
+    }
+    return append(total_reverse(cdr(p)), cons(total_reverse(car(p)), null()));
 }
 
 list shape(list p){
-
+    if (is_null(p)){
+        return null();
+    }
+    if (is_atom(car(p))){
+        return shape(cdr(p));
+    }
+    return cons(shape(car(p)),shape(cdr(p)));
 }
 
 list intersection(list p, list q){
-
+    if (is_null(p) || is_null(q)){
+        return null();
+    }
+    if (member( car(p), cdr(q))){
+        return cons( car(p), intersection(cdr(p), q) );
+    }
+    return intersection(cdr(p), q);
 }
 
 list list_union(list p, list q){
-
+    if (is_null(p)){
+        return q;
+    }
+    if (is_null(q)){
+        return p;
+    }
+    if (member(car(p), q)){
+        return list_union(cdr(p), q);
+    }
+    return cons(car(p), list_union(cdr(p), q));
 }
 
 list pFromPointer(list p){

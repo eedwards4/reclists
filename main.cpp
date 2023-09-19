@@ -174,7 +174,6 @@ int main()
                 num_nodes = "(a b c d e f g h i j k l m n o p q r s t u v w x y z)",
                 last1 = "(a b c d e f g h i j k l m n (o p (q r (s))) (((t (u (v)) w))) (x y) z)";
                       // Tests
-                      /*
     test_one();       // numNodesAtTheTopLevel
     test_two();       // is_lat
     test_two();
@@ -187,11 +186,9 @@ int main()
     test_seven();
     test_eight();     // equal
     test_eight();
-*/
     test_nine();      // two_the_same
     test_nine();
     test_nine();
-                       /*
     test_ten();       // total_reverse
     test_eleven();    // shape
     test_twelve();    // intersection
@@ -202,6 +199,6 @@ int main()
     test_thirteen();
     test_thirteen();
     test_thirteen();
-    test_thirteen();*/
+    test_thirteen();
     return 0;
 }

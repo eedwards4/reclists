@@ -127,6 +127,23 @@ list list_union(list p, list q){
 
 }
 
-list permute(list p){
+list pFromPointer(list p){
 
+}
+
+list pFromStart(list p){
+
+}
+
+list permute(list p){
+    if (is_null(p)){
+        return null();
+    }
+    for (int i = 0; i < numNodesAtTheTopLevel(p); i++){
+        if (is_atom(car(p))){
+            return cons(car(p), permute(cdr(p)));
+        }
+    }
+    // Start one pointer -> null
+    // Start 2nd pointer -> first pointer
 }
